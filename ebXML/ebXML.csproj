@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="DotNetExtensions\AttachmentContentSignatureTransform.cs" />
     <Compile Include="DotNetExtensions\ExtendedSignedXml.cs" />
+    <Compile Include="DotNetExtensions\NonCloseableStream.cs" />
     <Compile Include="DotNetExtensions\SecurityTokenReference.cs" />
     <Compile Include="EnvelopeFactory.cs" />
     <Compile Include="Models.cs" />

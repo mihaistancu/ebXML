@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Security.Cryptography.X509Certificates;
 using System.Xml;
 using CommandLine;
@@ -29,7 +30,7 @@ namespace ebXML
                     xml.Load(Filename);
                     var certificate = new X509Certificate2(o.Certificate);
                     var signer = new Signer(certificate);
-                    signer.Sign(xml);
+                    signer.Sign(xml, File.OpenRead(o.Sed));
                     xml.Save(Filename);
                 }
             });

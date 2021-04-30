@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Security.Cryptography.X509Certificates;
 using System.Security.Cryptography.Xml;
 using System.Xml;
@@ -15,7 +16,7 @@ namespace ebXML
             this.certificate = certificate;
         }
 
-        public void Sign(XmlDocument xml)
+        public void Sign(XmlDocument xml, Stream sed)
         {
             var security = new Security
             {
@@ -57,6 +58,14 @@ namespace ebXML
             };
             bodyReference.AddTransform(new XmlDsigExcC14NTransform());
             signedXml.AddReference(bodyReference);
+
+            var sedReference = new Reference(new NonCloseableStream(sed))
+            {
+                Uri = "cid:SED",
+                DigestMethod = SignedXml.XmlDsigSHA256Url
+            };
+            sedReference.AddTransform(new AttachmentContentSignatureTransform());
+            signedXml.AddExternalReference(sedReference);
             
             var keyInfo = new KeyInfo();
             keyInfo.AddClause(new SecurityTokenReference(security.BinarySecurityToken.Id));

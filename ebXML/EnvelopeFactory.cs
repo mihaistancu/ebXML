@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace ebXML
 {
@@ -41,6 +42,19 @@ namespace ebXML
                                     Role = "urn:eu:europa:ec:dgempl:eessi:ir:institution"
                                 }
                             },
+                            PayloadInfo = new List<PartInfo>
+                            {
+                                new PartInfo
+                                {
+                                    Reference = "cid:SED",
+                                    PartProperties = new List<Property>
+                                    {
+                                        new Property {Name = "PartType", Value = "SED"},
+                                        new Property {Name = "MimeType", Value = "application/xml"},
+                                        new Property {Name = "CompressionType", Value = "application/gzip"}
+                                    }
+                                }
+                            },
                             CollaborationInfo = new CollaborationInfo
                             {
                                 Service = new Service
@@ -57,7 +71,7 @@ namespace ebXML
                 },
                 Body = new Body
                 {
-                    Id = "body-id"
+                    Id = Guid.NewGuid().ToString()
                 }
             };
         }

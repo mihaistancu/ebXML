@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Xml.Serialization;
 
 namespace ebXML
@@ -22,6 +23,23 @@ namespace ebXML
     public class Security
     {
         public BinarySecurityToken BinarySecurityToken { get; set; }
+    }
+
+    public class Property
+    {
+        [XmlAttribute(AttributeName = "name")]
+        public string Name { get; set; }
+
+        [XmlText]
+        public string Value { get; set; }
+    }
+
+    public class PartInfo
+    {
+        public List<Property> PartProperties { get; set; }
+
+        [XmlAttribute(AttributeName = "href")]
+        public string Reference { get; set; }
     }
 
     public class Body
@@ -78,6 +96,7 @@ namespace ebXML
         public MessageInfo MessageInfo { get; set; }
         public CollaborationInfo CollaborationInfo { get; set; }
         public PartyInfo PartyInfo { get; set; }
+        public List<PartInfo> PayloadInfo { get; set; }
     }
 
     public class Messaging

@@ -15,5 +15,8 @@ namespace ebXML
 
         [Option]
         public string Filename { get; set; }
+
+        [Option]
+        public string Sed { get; set; }
     }
 }
