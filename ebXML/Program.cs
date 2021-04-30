@@ -1,5 +1,4 @@
 ﻿using System;
-using System.IO;
 using System.Security.Cryptography.X509Certificates;
 using System.Xml;
 using CommandLine;
@@ -20,7 +19,8 @@ namespace ebXML
                 {
                     var factory = new EnvelopeFactory();
                     var envelope = factory.Create();
-                    Serializer.Serialize(envelope, File.Create(Filename));
+                    var xml = Serializer.Serialize(envelope);
+                    xml.Save(Filename);
                 }
 
                 if (o.Sign)
@@ -30,6 +30,7 @@ namespace ebXML
                     var certificate = new X509Certificate2(o.Certificate);
                     var signer = new Signer(certificate);
                     signer.Sign(xml);
+                    xml.Save(Filename);
                 }
             });
         }

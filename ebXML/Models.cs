@@ -3,6 +3,27 @@ using System.Xml.Serialization;
 
 namespace ebXML
 {
+    public class BinarySecurityToken
+    {
+        [XmlAttribute(Namespace = Namespaces.WebServiceSecurityUtility)]
+        public string Id { get; set; }
+        
+        [XmlAttribute]
+        public string EncodingType { get; set; }
+        
+        [XmlAttribute]
+        public string ValueType { get; set; }
+
+        [XmlText]
+        public byte[] Value { get; set; }
+    }
+
+    [XmlRoot(Namespace = Namespaces.WebServiceSecurityExtensions)]
+    public class Security
+    {
+        public BinarySecurityToken BinarySecurityToken { get; set; }
+    }
+
     public class Body
     {
         [XmlAttribute(Namespace = Namespaces.WebServiceSecurityUtility)]
@@ -85,5 +106,8 @@ namespace ebXML
         public const string SoapEnvelope = "http://www.w3.org/2003/05/soap-envelope";
         public const string WebServiceSecurityUtility = "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd";
         public const string ElectronicBusinessMessagingService = "http://docs.oasis-open.org/ebxml-msg/ebms/v3.0/ns/core/200704/";
+        public const string Base64Binary = "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-soap-message-security-1.0#Base64Binary";
+        public const string X509TokenProfile = "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-x509-token-profile-1.0#X509v3";
+        public const string WebServiceSecurityExtensions = "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd";
     }
 }

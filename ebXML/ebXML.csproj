@@ -38,6 +38,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,6 +47,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DotNetExtensions\AttachmentContentSignatureTransform.cs" />
+    <Compile Include="DotNetExtensions\ExtendedSignedXml.cs" />
+    <Compile Include="DotNetExtensions\SecurityTokenReference.cs" />
     <Compile Include="EnvelopeFactory.cs" />
     <Compile Include="Models.cs" />
     <Compile Include="Options.cs" />
@@ -58,5 +62,6 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
