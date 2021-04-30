@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using CommandLine;
 
 namespace ebXML
 {
@@ -7,10 +8,16 @@ namespace ebXML
     {
         static void Main(string[] args)
         {
-            var factory = new EnvelopeFactory();
-            var envelope = factory.Create();
-            var filename = $"Envelope-{DateTime.Now:HH-mm-ss}";
-            Serializer.Serialize(envelope, File.Create(filename));
+            Parser.Default.ParseArguments<Options>(args).WithParsed(o =>
+            {
+                if (o.Create)
+                {
+                    var factory = new EnvelopeFactory();
+                    var envelope = factory.Create();
+                    var filename = $"Envelope-{DateTime.Now:HH-mm-ss}";
+                    Serializer.Serialize(envelope, File.Create(filename));
+                }
+            });
         }
     }
 }
