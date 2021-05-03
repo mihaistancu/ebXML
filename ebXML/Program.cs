@@ -20,13 +20,20 @@ namespace ebXML
                 {
                     var factory = new EnvelopeFactory();
                     var envelope = factory.Create();
+
+                    envelope.Header.Messaging.UserMessage.PartyInfo.From.PartyId.Value = o.Sender;
+                    envelope.Header.Messaging.UserMessage.PartyInfo.From.Role = o.SenderRole;
+                    envelope.Header.Messaging.UserMessage.PartyInfo.To.PartyId.Value = o.Receiver;
+                    envelope.Header.Messaging.UserMessage.PartyInfo.To.Role = o.ReceiverRole;
+                    envelope.Header.Messaging.UserMessage.CollaborationInfo.Service.Value = o.UseCase;
+                    
                     var xml = Serializer.Serialize(envelope);
                     xml.Save(Filename);
                 }
 
                 if (o.Sign)
                 {
-                    var xml = new XmlDocument();
+                    var xml = new XmlDocument{PreserveWhitespace = true};
                     xml.Load(Filename);
                     var certificate = new X509Certificate2(o.Certificate);
                     var signer = new Signer(certificate);

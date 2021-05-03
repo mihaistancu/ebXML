@@ -18,5 +18,20 @@ namespace ebXML
 
         [Option]
         public string Sed { get; set; }
+
+        [Option]
+        public string Sender { get; set; }
+        
+        [Option]
+        public string SenderRole { get; set; }
+        
+        [Option]
+        public string Receiver { get; set; }
+        
+        [Option]
+        public string ReceiverRole { get; set; }
+
+        [Option]
+        public string UseCase { get; set; }
     }
 }
