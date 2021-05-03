@@ -10,11 +10,11 @@ namespace ebXML
         public string Id { get; set; }
         
         [XmlAttribute]
-        public string EncodingType { get; set; }
-        
-        [XmlAttribute]
         public string ValueType { get; set; }
 
+        [XmlAttribute]
+        public string EncodingType { get; set; }
+        
         [XmlText]
         public byte[] Value { get; set; }
     }
@@ -59,9 +59,9 @@ namespace ebXML
 
     public class CollaborationInfo
     {
+        public Service Service { get; set; }
         public string Action { get; set; }
         public string ConversationId { get; set; }
-        public Service Service { get; set; }
     }
 
     public class PartyId
@@ -75,14 +75,14 @@ namespace ebXML
 
     public class Party
     {
-        public string Role { get; set; }
         public PartyId PartyId { get; set; }
+        public string Role { get; set; }
     }
 
     public class PartyInfo
     {
-        public Party To { get; set; }
         public Party From { get; set; }
+        public Party To { get; set; }
     }
 
     public class MessageInfo
@@ -94,8 +94,8 @@ namespace ebXML
     public class UserMessage
     {
         public MessageInfo MessageInfo { get; set; }
-        public CollaborationInfo CollaborationInfo { get; set; }
         public PartyInfo PartyInfo { get; set; }
+        public CollaborationInfo CollaborationInfo { get; set; }
         public List<PartInfo> PayloadInfo { get; set; }
     }
 
