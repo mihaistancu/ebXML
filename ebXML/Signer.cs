@@ -61,7 +61,7 @@ namespace ebXML
 
             var sedReference = new Reference(new NonCloseableStream(sed))
             {
-                Uri = "cid:SED",
+                Uri = "cid:DefaultSED",
                 DigestMethod = SignedXml.XmlDsigSHA256Url
             };
             sedReference.AddTransform(new AttachmentContentSignatureTransform());

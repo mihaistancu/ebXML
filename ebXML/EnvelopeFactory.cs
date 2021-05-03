@@ -30,7 +30,7 @@ namespace ebXML
                                         Type = "urn:eu:europa:ec:dgempl:eessi:ir",
                                         Value = string.Empty
                                     },
-                                    Role = "urn:eu:europa:ec:dgempl:eessi:ir:institution"
+                                    Role = "urn:eu:europa:ec:dgempl:eessi:system"
                                 },
                                 To = new Party
                                 {
@@ -46,7 +46,7 @@ namespace ebXML
                             {
                                 new PartInfo
                                 {
-                                    Reference = "cid:SED",
+                                    Reference = "cid:DefaultSED",
                                     PartProperties = new List<Property>
                                     {
                                         new Property {Name = "PartType", Value = "SED"},
@@ -65,7 +65,6 @@ namespace ebXML
                                 Action = "Send",
                                 ConversationId = Guid.NewGuid().ToString()
                             },
-                            
                         }
                     }
                 },
