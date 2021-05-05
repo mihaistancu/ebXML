@@ -14,7 +14,7 @@ namespace ebXML
         {
             Parser.Default.ParseArguments<Options>(args).WithParsed(o =>
             {
-                Filename = o.Filename ?? $"Envelope-{DateTime.Now:HH-mm-ss}";
+                Filename = o.Filename ?? "Envelope";
 
                 if (o.Create)
                 {
